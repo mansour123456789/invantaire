@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  invantaire-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecopilot-invantaire
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    networks:
+      - ecopilot-network
+
+networks:
+  ecopilot-network:
+    name: ecopilot-network
+    driver: bridge
